@@ -1,5 +1,3 @@
-# experiencein/usuarios/urls.py 
-
 from django.urls import path
 from usuarios.views import RegistrarUsuarioView
 from django.contrib.auth.views import LoginView, LogoutView

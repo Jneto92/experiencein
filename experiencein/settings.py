@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dhfkowdh(6(w&-u%@r=%18kzf$ps3ov9z*h+=_c%(j_2jo@g_o'
+SECRET_KEY = '!ui0_wsnt_%@kf@t@-$n@ub)*&*7@=-7k*rt^^x(v(^ep4#r4t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,8 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'experiencein.urls'
@@ -123,7 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_URL="/login/"
-LOGOUT_URL="/logout/"
-LOGIN_REDIRECT_URL="/"
+LOGIN_URL='/login/'
+LOGOUT_URL='/logout/'
+LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL=LOGIN_URL

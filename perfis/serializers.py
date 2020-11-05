@@ -1,4 +1,4 @@
-from rest_framework import serializers, exceptions
+from rest_framework import serializers, exceptions, status
 from .models import Perfil, Convite
 from rest_framework.authtoken.models import Token
 
@@ -13,7 +13,7 @@ class ContatoSerializer(serializers.ModelSerializer):
 class PerfilSerializer(serializers.ModelSerializer):
     senha = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
     email = serializers.EmailField()
-    contato = ContatoSerializer(required=False, many=True)
+    contatos = ContatoSerializer(required=False, many=True)
 
     class Meta:
         model = Perfil
@@ -27,7 +27,7 @@ class PerfilSerializer(serializers.ModelSerializer):
             usuario.save()
 
         except:
-            raise exceptionsParseError('O usuário já existe.', code=status.HTTP_400_BAD_REQUEST)
+            raise exceptions.ParseError('O usuário já existe.', code=status.HTTP_400_BAD_REQUEST)
 
         Token.objects.create(user=usuario)
         validated_data['usuario'] = usuario

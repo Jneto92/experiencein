@@ -28,7 +28,7 @@ class PerfilViewSet(viewsets.ModelViewSet):
 def get_convites(request, *args, **kwargs):
 	perfil_logado = get_perfil_logado(request)
 	convites = Convite.objects.filter(convidado=perfil_logado)
-	serializer = ConviteSerializer(convites)
+	serializer = ConviteSerializer(convites, many=True)
 	return response.Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
@@ -41,7 +41,7 @@ def convidar(request, *args, **kwargs):
 	perfil_logado = get_perfil_logado(request)
 	if perfil_a_convidar != perfil_logado:
 		perfil_logado.convidar(perfil_a_convidar)
-		return respose.Response({'mensagem': f'Convite enviado com sucesso para {perfil_a_convidar.email}.'}, status=status.HTTP_200_OK)
+		return response.Response({'mensagem': f'Convite enviado com sucesso para {perfil_a_convidar.email}.'}, status=status.HTTP_200_OK)
 
 	raise exceptions.ParseError('Você não pode convidar o perfil com o id informado.')
 
